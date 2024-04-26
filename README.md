@@ -4,6 +4,10 @@ Aplicación simple de ejemplo
 ## DevOps
 ### Pipeline
 
+## Observabilidad
+### Logs
+
+
 express --view=jade ejemplo
 
     npm install
