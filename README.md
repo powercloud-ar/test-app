@@ -1,6 +1,9 @@
 # Test NodeJS App
 Aplicación simple de ejemplo 
 
+## DevOps
+### Pipeline
+
 express --view=jade ejemplo
 
     npm install
