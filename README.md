@@ -3,6 +3,7 @@ Aplicación simple de ejemplo
 
 ## DevOps
 ### Pipeline
+ Commit (Github) -> GitAction -> Build -> Harbor
 
 ## Observabilidad
 ### Logs
