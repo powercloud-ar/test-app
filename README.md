@@ -3,7 +3,8 @@ Aplicación simple de ejemplo
 
 ## DevOps
 ### Pipeline
- Commit (Github) -> GitAction -> Build -> Harbor
+ Commit (Github) -> GitAction -> Build -> Harbor 
+                              -> Workflow DT -> Jenkins
 
 ## Observabilidad
 ### Logs
