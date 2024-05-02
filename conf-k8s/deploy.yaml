@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: tiendapc
-          image: mnroman/tiendapc
+          image: https://harbor.rocketcloud.io/test-nodejs-app/mitienda:latest
           ports:
             - containerPort: 3000
           env:
