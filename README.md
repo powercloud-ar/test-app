@@ -4,7 +4,7 @@ Aplicación simple de ejemplo
 ## DevOps
 ### Pipeline
  Commit (Github) -> GitAction -> Build -> Harbor 
-                              -> Workflow DT -> Jenkins
+                              -> Workflow DT -> Jenkins -> ArgoCD
 
 ## Observabilidad
 ### Logs
