@@ -37,4 +37,4 @@ EOF
 )
 
 echo $PAYLOAD
-curl -H "Content-Type: application/json" -H "Authorization: Api-Token ${DT_TOKEN}" -X POST -d "${PAYLOAD}" ${DT_URL}/api/v2/events/ingest/
+curl -H "Content-Type: application/json" -H "Authorization: Api-Token $9" -X POST -d "${PAYLOAD}" $10/api/v2/events/ingest/
