@@ -9,7 +9,7 @@ metadata:
   namespace: test-nodejs-app
 spec:
   rules:
-  - host: tiendapc
+  - host: tienda.rocketcloud.io
     http:
       paths:
       - backend:
