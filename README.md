@@ -3,23 +3,23 @@ Aplicación simple de ejemplo.
 
 ## DevOps
 ### Pipeline
- Commit (Github) -> GitAction (Build & Deploy) 
-  
-  -----> Harbor: Registry
-  
-  -----> ArgoCD: Deployment in  K8s Cluster
-
- Dynatrace
- -> Workflow DT -> Create event, sysntetic, slo
- 
- -> Site Reability Guardian
+    Commit (Github) -> Merge -> GitAction (Build & Deploy) 
+     
+     -----> Harbor: Registry
+     
+     -----> ArgoCD: Deployment in  K8s Cluster
+   
+    Dynatrace
+    -> Workflow DT -> Create event, sysntetic, slo
+    
+    -> Site Reability Guardian
 
 ## Observabilidad
 ### Logs
 ### Metrics
 ### Traces
 
-express --view=jade ejemplo
+    express --view=jade ejemplo
 
     npm install
     npm install jsonwebtoken
