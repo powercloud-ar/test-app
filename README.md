@@ -8,6 +8,7 @@ Aplicación simple de ejemplo
 
 ## Observabilidad
 ### Logs
+### Metrics
 ### Traces
 
 express --view=jade ejemplo
