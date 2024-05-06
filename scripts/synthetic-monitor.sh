@@ -1,10 +1,9 @@
 #!/bin/bash
-
 PAYLOAD=$(cat <<EOF
 {
-  "name": "$1 $2-$3",
-  "frequencyMin": 0,
   "enabled": true,
+  "frequencyMin": 5,
+  "name": "$1 $2-$3",
   "type": "BROWSER",
   "createdFrom": "GUI",
   "script": {
@@ -19,15 +18,22 @@ PAYLOAD=$(cat <<EOF
         "disable-web-security": false
       }
     },
-  "events": [{
+    "events": [
+      {
         "type": "navigate",
         "wait": {
-            "waitFor": "page_complete"
+          "waitFor": "page_complete"
         },
         "description": "Loading of \"https://tienda.rocketcloud.io/\"",
         "url": "https://tienda.rocketcloud.io/"
-    }],
+      }
+    ]
+  },
   "anomalyDetection": {
+    "loadingTimeThresholds": {
+      "enabled": true,
+      "thresholds": []
+    },
     "outageHandling": {
       "globalOutage": true,
       "globalOutagePolicy": {
@@ -39,23 +45,17 @@ PAYLOAD=$(cat <<EOF
         "consecutiveRuns": null
       },
       "retryOnError": true
-    },
-    "loadingTimeThresholds": {
-      "enabled": true,
-      "thresholds": []
     }
   },
-  "tags": [
-   "$1-$3"
-  ],
-  "managementZones": [],
-  "automaticallyAssignedApps": [],
-  "manuallyAssignedApps": [],
   "keyPerformanceMetrics": {
     "loadActionKpm": "VISUALLY_COMPLETE",
     "xhrActionKpm": "VISUALLY_COMPLETE"
   },
-  "events": []
+  "tags": ["$1-$3"],
+  "managementZones": [],
+  "automaticallyAssignedApps": [],
+  "manuallyAssignedApps": [],
+  "locations": ["GEOLOCATION-924D253001531722"]
 }
 EOF
 )
