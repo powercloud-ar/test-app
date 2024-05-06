@@ -3,13 +3,11 @@ Aplicación simple de ejemplo.
 
 ## DevOps
 ### Pipeline
-    Commit (Github) -> Merge -> GitAction (Build & Deploy) 
-     
-     -----> Harbor: Registry
-     
-     -----> ArgoCD: Deployment in  K8s Cluster
-   
-    Dynatrace
+    GitHub: 
+    Commit -> Pull Request -> Merge -> GitAction (Build & Deploy) 
+         -----> Harbor: Registry
+         -----> ArgoCD: Deployment in  K8s Cluster
+    Dynatrace:
     -> Workflow DT -> Create event, sysntetic, slo
     
     -> Site Reability Guardian
