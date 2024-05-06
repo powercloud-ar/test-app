@@ -1,5 +1,5 @@
 #!/bin/bash
-PAYLOAD=$(cat <<EOF
+  PAYLOAD=$(cat <<EOF
 {
   "enabled": true,
   "frequencyMin": 5,

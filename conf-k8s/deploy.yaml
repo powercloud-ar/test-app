@@ -11,6 +11,7 @@ spec:
     metadata:
       labels:
         app: tiendapc
+        buildVersion: 0.0.1
         app.kubernetes.io/name: tiendapc
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: tiendapc
