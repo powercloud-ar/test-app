@@ -1,5 +1,5 @@
 # Test NodeJS App
-Aplicación simple de ejemplo. Pipeline DEVOPS
+Aplicación simple de ejemplo.
 
 ## DevOps
 ### Pipeline
