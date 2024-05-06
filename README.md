@@ -10,6 +10,7 @@ Aplicación simple de ejemplo .
   --> Argo
  
  -> Workflow DT -> Create event, sysntetic, slo
+ 
  -> Site Reability Guardian
 
 ## Observabilidad
@@ -41,11 +42,3 @@ DEBUG=ejemplo:* npm start
     });
 
     logger.info('Hello, Fluent Bit!');
-
-### Construir imagen:
-
-    docker build -t tiendapc:latest .
-    docker login -u [nombre_usuario]
-    docker tag tiendapc [nombre_usuario]/tiendapc 
-    docker push [nombre_usuario]/tiendapc
-
