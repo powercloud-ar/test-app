@@ -4,7 +4,7 @@ Aplicación simple de ejemplo
 ## DevOps
 ### Pipeline
  Commit (Github) -> GitAction -> Build -> Harbor 
- -> Workflow DT
+ -> Workflow DT -> Create event, sysntetic, slo
 
 ## Observabilidad
 ### Logs
