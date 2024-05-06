@@ -30,7 +30,6 @@ spec:
                 "tiendapc_nodejs_active_handles"
                 ]
           }
-      buildVersion: 1.0.1
     spec:
       containers:
         - name: tiendapc
