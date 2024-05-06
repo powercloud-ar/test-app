@@ -5,6 +5,7 @@ Aplicación simple de ejemplo
 ### Pipeline
  Commit (Github) -> GitAction -> Build -> Harbor 
  -> Workflow DT -> Create event, sysntetic, slo
+ -> Site Reability Guardian
 
 ## Observabilidad
 ### Logs
