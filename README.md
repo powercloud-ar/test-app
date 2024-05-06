@@ -5,10 +5,11 @@ Aplicación simple de ejemplo .
 ### Pipeline
  Commit (Github) -> GitAction (Build & Deploy) 
   
-  --> Harbor 
+  -----> Harbor: Registry
   
-  --> Argo
- 
+  -----> ArgoCD: Deployment in  K8s Cluster
+
+ Dynatrace
  -> Workflow DT -> Create event, sysntetic, slo
  
  -> Site Reability Guardian
