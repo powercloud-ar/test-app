@@ -1,10 +1,16 @@
 # Test NodeJS App
-Aplicación simple de ejemplo 
+Aplicación simple de ejemplo .
 
 ## DevOps
 ### Pipeline
- Commit (Github) -> GitAction -> Build -> Harbor 
+ Commit (Github) -> GitAction (Build & Deploy) 
+  
+  --> Harbor 
+  
+  --> Argo
+ 
  -> Workflow DT -> Create event, sysntetic, slo
+ -> Site Reability Guardian
 
 ## Observabilidad
 ### Logs
