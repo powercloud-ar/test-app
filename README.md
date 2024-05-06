@@ -9,7 +9,6 @@ Aplicación simple de ejemplo.
          -----> ArgoCD: Deployment in  K8s Cluster
     Dynatrace:
     -> Workflow DT -> Create event, sysntetic, slo
-    
     -> Site Reability Guardian
 
 ## Observabilidad
