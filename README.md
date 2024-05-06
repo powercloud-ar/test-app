@@ -4,8 +4,11 @@ Aplicación simple de ejemplo .
 ## DevOps
 ### Pipeline
  Commit (Github) -> GitAction (Build & Deploy) 
+  
   --> Harbor 
+  
   --> Argo
+ 
  -> Workflow DT -> Create event, sysntetic, slo
  -> Site Reability Guardian
 
