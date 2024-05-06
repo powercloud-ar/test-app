@@ -1,7 +1,6 @@
 # Test NodeJS App
 
-## DevOps
-### Pipeline
+## DevOps Pipeline
     GitHub: 
     Commit -> Pull Request -> Merge -> GitAction (Build & Deploy) 
          -----> Harbor: Registry
