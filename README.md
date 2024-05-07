@@ -1,5 +1,9 @@
 # Test NodeJS App
 
+Services: 
+    - Frontend
+    - Backend
+
 ## DevOps Pipeline
     GitHub: 
     Commit -> Pull Request -> Merge -> GitAction (Build & Deploy) 
