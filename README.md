@@ -1,6 +1,6 @@
 # Test NodeJS App
 
-    Services: 
+    K8s Services: 
         - Frontend: NodeJS
         - Database: MongoDB
 
