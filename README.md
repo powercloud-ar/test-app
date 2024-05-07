@@ -1,7 +1,7 @@
 # Test NodeJS App
 
     K8s Services: 
-        - Frontend: NodeJS
+        - Backend: NodeJS
         - Database: MongoDB
 
 ## DevOps Pipeline
