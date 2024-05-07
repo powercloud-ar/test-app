@@ -1,8 +1,8 @@
 # Test NodeJS App
 
-Services: 
-    - Frontend
-    - Backend
+    Services: 
+        - Frontend: NodeJS
+        - Database: MongoDB
 
 ## DevOps Pipeline
     GitHub: 
