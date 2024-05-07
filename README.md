@@ -27,7 +27,7 @@ Aplicacion para pruebas Pipeline DevOps + Observabilidad OpenTelemetry
     npm install mongoose
     npm install bcrypt
 
-DEBUG=ejemplo:* npm start
+    DEBUG=ejemplo:* npm start
 
 
 ### Logs
