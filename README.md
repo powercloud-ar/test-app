@@ -1,6 +1,6 @@
 # Test NodeJS App
 
-Aplicacion para pruebas DevOps
+Aplicacion para pruebas Pipeline DevOps
 
     Services: 
         - Backend: NodeJS
