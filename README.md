@@ -1,5 +1,4 @@
 # Test NodeJS App
-prueba.
 
 ## DevOps Pipeline
     GitHub: 
