@@ -12,7 +12,8 @@
          -----> Harbor: Registry
          -----> ArgoCD: Deployment in  K8s Cluster
     Dynatrace:
-    -> Workflow DT -> Create event, sysntetic, slo
+    -> Workflow DT -> Create event, synthetic, slo
+                   -> Run Sinthetic
     -> Site Reability Guardian
 ---
 ## Observabilidad
