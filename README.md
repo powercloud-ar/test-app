@@ -33,7 +33,6 @@ Aplicacion TEST: Pipeline DevOps + Observabilidad OpenTelemetry
 ### Logs
     > npm install winston
 
-
     const winston = require('winston');
 
     const logger = winston.createLogger({
