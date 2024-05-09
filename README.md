@@ -33,7 +33,8 @@
                         ]
                   }
 ### Traces
-
+    Opentelemetry
+    
 ### Logs
 Logs en Nodejs
 
