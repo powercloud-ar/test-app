@@ -11,11 +11,10 @@ spec:
     metadata:
       labels:
         app: mitienda
-        buildVersion: 1.0.13
+        buildVersion: 1.0.14
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
-
       annotations:
         instrumentation.opentelemetry.io/inject-nodejs: 'true'
         metrics.dynatrace.com/scrape: 'true'
