@@ -1,22 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tiendapc
+  name: mitienda
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tiendapc
+      app: mitienda
   template:
     metadata:
       labels:
-        app: tiendapc
+        app: mitienda
         buildVersion: 1.0.13
-        app.kubernetes.io/name: tiendapc
+        app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
-        app.kubernetes.io/part-of: tiendapc
-        app.kubernetes.io/version: 0.0.43
-        app.kubernetes.io/build-version: '51'
+        app.kubernetes.io/part-of: mitienda
+
       annotations:
         instrumentation.opentelemetry.io/inject-nodejs: 'true'
         metrics.dynatrace.com/scrape: 'true'
@@ -27,22 +26,20 @@ spec:
           {
             "mode": "include",
             "names": [
-                "tiendapc_nodejs_active_handles"
+                "mitienda_nodejs_active_handles"
                 ]
           }
     spec:
       containers:
-        - name: tiendapc
+        - name: mitienda
           image: harbor.rocketcloud.io/test-nodejs-app/mitienda:latest
           ports:
             - containerPort: 3000
           env:
-            - name: DT_CUSTOM_PROP
-              value: buildVersion=0.0.4
             - name: DT_RELEASE_VERSION
               valueFrom:
                 fieldRef:
-                  fieldPath: metadata.labels['app.kubernetes.io/version']
+                  fieldPath: metadata.labels['buildVersion']
             - name: DT_RELEASE_PRODUCT
               valueFrom:
                 fieldRef:
@@ -50,7 +47,7 @@ spec:
             - name: DT_BUILD_VERSION
               valueFrom:
                 fieldRef:
-                  fieldPath: metadata.labels['app.kubernetes.io/build-version']
+                  fieldPath: metadata.labels['buildVersion']
           imagePullPolicy: Always
       imagePullSecrets:
         - name: regcred
