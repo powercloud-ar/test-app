@@ -19,7 +19,7 @@
 ## Observabilidad Dynatrace
 
 ### Metrics
-
+        Export:
 ### Traces
 
 ### Logs
