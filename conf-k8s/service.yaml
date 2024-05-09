@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: tiendapc-svc
   labels:
-    app.kubernetes.io/app: tiendapc
+    app.kubernetes.io/app: mitienda
 spec:
   selector:
-    app: tiendapc
+    app: mitienda
   ports:
     - port: 80
       targetPort: 3000
