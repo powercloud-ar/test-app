@@ -9,7 +9,7 @@
 ## DevOps Pipeline
     GitHub: 
     Commit -> Pull Request -> Merge -> GitAction (Build & Deploy) 
-         -----> Harbor: Registry
+         -----> Harbor: Registry -> Scan Vulnerabilities
          -----> ArgoCD: Deployment in  K8s Cluster
     Dynatrace:
     -> Workflow DT -> Create event, synthetic, slo
