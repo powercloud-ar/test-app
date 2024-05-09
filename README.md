@@ -16,7 +16,7 @@
                    -> Run Sinthetic
     -> Site Reability Guardian
 ---
-## Observabilidad
+## Observabilidad Dynatrace
 
 ### Metrics
 
