@@ -19,7 +19,19 @@
 ## Observabilidad Dynatrace
 
 ### Metrics
-        Export:
+        annotations:
+                instrumentation.opentelemetry.io/inject-nodejs: 'true'
+                metrics.dynatrace.com/scrape: 'true'
+                metrics.dynatrace.com/path: /metrics
+                metrics.dynatrace.com/port: '3000'
+                metrics.dynatrace.com/secure: 'false'
+                metrics.dynatrace.com/filter: |
+                  {
+                    "mode": "include",
+                    "names": [
+                        "mitienda_nodejs_active_handles"
+                        ]
+                  }
 ### Traces
 
 ### Logs
