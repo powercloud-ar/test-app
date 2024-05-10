@@ -1,5 +1,4 @@
 # Test NodeJS App
-public
 - Aplicacion TEST: Pipeline DevOps + Observabilidad OpenTelemetry
 
         Services: 
