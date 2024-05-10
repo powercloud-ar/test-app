@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: mitienda
-          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:{{ .Environment.DT_RELEASE_VERSION }}
+          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:${DT_RELEASE_VERSION}
           ports:
             - containerPort: 3000
           env:
