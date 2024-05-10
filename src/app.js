@@ -10,6 +10,12 @@ const usuarioRouter = require("./routes/usuario");
 const categoriaRouter = require("./routes/categoria");
 const metricsRouter = require("./routes/metrics");
 
+const rookout = require('rookout');
+rookout.start({
+  //token: process.env.ROOKOUT_TOKEN
+  token: "ebb07cf7e957d775764cc76947abc2fc837bd68938351fbe9a4c259464504e38"
+});
+
 var app = express();
 
 app.set("secretKey", "MiTienda");
