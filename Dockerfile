@@ -5,8 +5,6 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY src/package.json /usr/src/app/
 RUN npm install
-RUN npm install --save rookout
-
 
 # Bundle app source
 COPY src/ /usr/src/app
