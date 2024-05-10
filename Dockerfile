@@ -15,7 +15,7 @@ ENV NODE_OPTIONS "-r rookout/start"
 ENV ROOKOUT_TOKEN ebb07cf7e957d775764cc76947abc2fc837bd68938351fbe9a4c259464504e38
 ENV ROOKOUT_LABELS env:dev
 
-COPY .git /.git
+COPY .git /usr/src/.git
 
 EXPOSE 3000
 
