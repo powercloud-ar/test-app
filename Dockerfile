@@ -11,7 +11,7 @@ COPY src/ /usr/src/app
 
 ENV ROOKOUT_TOKEN ebb07cf7e957d775764cc76947abc2fc837bd68938351fbe9a4c259464504e38
 
-COPY .git /usr/src/.git
+COPY .git /.git
 
 EXPOSE 3000
 
