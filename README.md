@@ -32,6 +32,8 @@
                         ]
                   }
 ### Traces
+
+    DT
     Opentelemetry
     
 ### Logs
