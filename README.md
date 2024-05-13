@@ -1,6 +1,7 @@
 # Test NodeJS App
-- Aplicacion TEST: Pipeline DevOps + Observabilidad OpenTelemetry
 
+  Pipeline DevOps + Observabilidad OpenTelemetry
+  
         Services: 
             - Backend: NodeJS
             - Database: MongoDB
