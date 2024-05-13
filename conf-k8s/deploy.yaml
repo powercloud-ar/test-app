@@ -17,7 +17,7 @@ spec:
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
-        dt.owner: team-powercloud
+        dt.owner: PowerCloud
       annotations:
         instrumentation.opentelemetry.io/inject-nodejs: 'true'
         metrics.dynatrace.com/scrape: 'true'
