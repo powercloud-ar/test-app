@@ -13,6 +13,7 @@ spec:
         app: mitienda
         buildVersion: 1.0.28
         app.kubernetes.io/stage: QA
+        app.kubernetes.io/buildVersoin: 1
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
@@ -45,6 +46,10 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['buildVersion']
+            - name: DT_RELEASE_BUILD_VERSION
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/buildVersion']
             - name: DT_RELEASE_PRODUCT
               valueFrom:
                 fieldRef:
