@@ -1,6 +1,6 @@
 # Test NodeJS App
 
-  Pipeline DevOps + Observabilidad OpenTelemetry
+## Pipeline DevOps + Observabilidad OpenTelemetry
   
         Services: 
             - Backend: NodeJS
