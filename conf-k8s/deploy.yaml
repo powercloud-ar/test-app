@@ -12,9 +12,11 @@ spec:
       labels:
         app: mitienda
         buildVersion: 1.0.27
+        app.kubernetes.io/stage: QA
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
+        dt.owner: team-powercloud
       annotations:
         instrumentation.opentelemetry.io/inject-nodejs: 'true'
         metrics.dynatrace.com/scrape: 'true'
@@ -35,6 +37,10 @@ spec:
           ports:
             - containerPort: 3000
           env:
+            - name: DT_RELEASE_STAGE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.labels['app.kubernetes.io/stage']
             - name: DT_RELEASE_VERSION
               valueFrom:
                 fieldRef:
