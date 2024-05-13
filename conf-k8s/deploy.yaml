@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: mitienda
-          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:1.0.27
+          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:1.0.28
           ports:
             - containerPort: 3000
           env:
