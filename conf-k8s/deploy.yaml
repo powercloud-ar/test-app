@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         app: mitienda
-        buildVersion: 1.0.28
+        buildVersion: 1.0.29
         app.kubernetes.io/stage: QA
         app.kubernetes.io/buildVersion: 2024-02-01
         app.kubernetes.io/name: mitienda
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: mitienda
-          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:1.0.28
+          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:1.0.29
           ports:
             - containerPort: 3000
           env:
