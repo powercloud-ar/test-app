@@ -13,7 +13,7 @@ spec:
         app: mitienda
         buildVersion: 1.0.28
         app.kubernetes.io/stage: QA
-        app.kubernetes.io/buildVersoin: 1
+        app.kubernetes.io/buildVersion: 2024-01
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
