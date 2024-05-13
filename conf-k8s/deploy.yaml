@@ -54,10 +54,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.labels['app.kubernetes.io/part-of']
-            - name: DT_BUILD_VERSION
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.labels['buildVersion']
           imagePullPolicy: Always
       imagePullSecrets:
         - name: regcred
