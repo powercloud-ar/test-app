@@ -1,6 +1,6 @@
 # Test NodeJS App
 
-  Pipeline DevOps + Observabilidad OpenTelemetry
+## Pipeline DevOps + Observabilidad OpenTelemetry
   
         Services: 
             - Backend: NodeJS
@@ -17,7 +17,6 @@
     -> Site Reability Guardian
 ---
 ## Observabilidad Dynatrace
-
 ### Metrics
         annotations:
                 instrumentation.opentelemetry.io/inject-nodejs: 'true'
