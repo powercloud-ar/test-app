@@ -6,6 +6,45 @@ block content
 
   div(id="productos-container")
 
+  style.
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    #productos-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    h2 {
+      color: #333;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #e2e2e2;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    li:hover {
+      background: #d4d4d4;
+    }
+    .price {
+      font-weight: bold;
+      color: #007BFF;
+    }
+
   script.
     // Utilizando fetch para obtener los productos
     fetch('/producto')
@@ -19,7 +58,7 @@ block content
         const ul = document.createElement('ul');
         data.forEach(producto => {
           const li = document.createElement('li');
-          li.textContent = `${producto.nombre} - ${producto.precio}`;
+          li.innerHTML = `<span>${producto.nombre}</span> - <span class="price">$${producto.precio}</span>`;
           ul.appendChild(li);
         });
 
