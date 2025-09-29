@@ -76,3 +76,12 @@ jobs:
 
           # Cambiar buildVersion label
           sed -i "s|buildVersion: .*|buildVersion: $BUILD_VERSION|g" $DEPLOY_FILE
+
+        # (Opcional) Commit del deploy.yaml actualizado
+      - name: Commit updated deploy.yaml
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add conf-k8s/deploy.yaml
+          git commit -m "Update buildVersion to $BUILD_VERSION and Docker image"
+          git push
