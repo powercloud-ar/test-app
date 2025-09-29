@@ -29,12 +29,12 @@ spec:
             "mode": "include",
             "names": [
                 "mitienda_nodejs_active_handles"
-                ]
+            ]
           }
     spec:
       containers:
         - name: mitienda
-          image: harbor.rocketcloud.io/test-nodejs-app/mitienda:1.0.39
+          image: mnroman/mitienda:1.0.39  # Imagen en Docker Hub
           ports:
             - containerPort: 3000
           env:
@@ -56,4 +56,4 @@ spec:
                   fieldPath: metadata.labels['app.kubernetes.io/part-of']
           imagePullPolicy: Always
       imagePullSecrets:
-        - name: regcred
+        - name: dockerhub-secret   # Secret de acceso a Docker Hub privado
