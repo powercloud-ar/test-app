@@ -14,27 +14,32 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Set up Node.js (opcional, si necesitás compilar antes de dockerizar)
+      # 2. Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: src/package-lock.json
 
-      # 3. Instalar dependencias y construir (opcional)
+      # 3. Instalar dependencias dentro de src/
       - name: Install dependencies
+        working-directory: ./src
         run: npm install
 
+      # 4. Build dentro de src/
       - name: Build project
+        working-directory: ./src
         run: npm run build --if-present
 
-      # 4. Login en Docker Hub
+      # 5. Log in en Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 5. Construir y subir la imagen
+      # 6. Construir y subir la imagen
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
