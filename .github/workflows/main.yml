@@ -84,4 +84,4 @@ jobs:
           git config user.email "github-actions@github.com"
           git add conf-k8s/deploy.yaml
           git commit -m "Update buildVersion to $BUILD_VERSION and Docker image"
-          git push
+          git push https://martiroman:${{ secrets.PAT_TOKEN }}@github.com/martiroman/test-nodejs-app.git HEAD:main
