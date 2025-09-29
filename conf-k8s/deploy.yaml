@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: mitienda
-          image: mnroman/mitienda:latest
+          image: mnroman/mi-app-node:latest
           ports:
             - containerPort: 3000
           env:
