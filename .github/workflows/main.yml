@@ -56,7 +56,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mitienda:${{ env.BUILD_VERSION }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:${{ env.BUILD_VERSION }}
 
      # Generar buildVersion (por ejemplo commit count)
       - name: Generate build version
@@ -71,7 +71,7 @@ jobs:
       - name: Update deploy.yaml
         run: |
           DEPLOY_FILE=conf-k8s/deploy.yaml
-          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mitienda:latest
+          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
           BUILD_VERSION=${{ env.BUILD_VERSION }}
 
           # Cambiar la imagen
