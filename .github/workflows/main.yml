@@ -13,6 +13,8 @@ jobs:
       # 1️⃣ Checkout del repo
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
 
       # 2️⃣ Setup Node.js
       - name: Set up Node.js
@@ -83,5 +85,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add conf-k8s/deploy.yaml
-          git commit -m "Update buildVersion to $BUILD_VERSION and Docker image"
-          git push https://martiroman:${{ secrets.PAT_TOKEN }}@github.com/martiroman/test-nodejs-app.git HEAD:main
+          git commit -m "Update buildVersion to $BUILD_VERSION and Docker image" || echo "No changes to commit"
+          git push origin HEAD:main
