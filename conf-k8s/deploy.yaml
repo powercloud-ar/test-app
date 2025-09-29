@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
         - name: mitienda
-          image: mnroman/mitienda:1.0.39  # Imagen en Docker Hub
+          image: mnroman/mi-app-node:latest  # Imagen en Docker Hub
           ports:
             - containerPort: 3000
           env:
