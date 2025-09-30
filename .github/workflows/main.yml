@@ -1,10 +1,8 @@
 name: Build, Push Docker Image, Deploy and Stress Test
-
 on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
   
@@ -70,9 +68,8 @@ jobs:
 
       - name: Run stress test (Pre-Deploy)
         run: |
-          # Ejemplo usando k6
           docker run --rm -i loadimpact/k6 run - < ./stress-tests/test-script.js \
-            --env TARGET_URL=https://qa.mi-app.example.com
+            --env TARGET_URL=https://tienda.rocketcloud.io/
             
   # ==============================
   # 3️. Deploy via ArgoCD
@@ -118,4 +115,4 @@ jobs:
       - name: Run stress test (Post-Deploy)
         run: |
           docker run --rm -i loadimpact/k6 run - < ./stress-tests/test-script.js \
-            --env TARGET_URL=https://qa.mi-app.example.com
+            --env TARGET_URL=https://tienda.rocketcloud.io/
