@@ -108,6 +108,21 @@ jobs:
           git commit -m "Update buildVersion to $BUILD_VERSION and Docker image" || echo "No changes to commit"
           git push origin HEAD:main
 
+      - name: Install ArgoCD CLI
+        run: |
+          sudo curl -sSL -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
+          sudo chmod +x /usr/local/bin/argocd
+
+      - name: Wait ArgoCD Sync
+        env:
+          ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
+          ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
+        run: |
+          argocd login $ARGOCD_SERVER --username $ARGOCD_USER --password $ARGOCD_TOKEN --insecure
+          argocd app wait test-nodejs-app --health
+
+
+          
   # ==============================
   # 4️. Stress Test Post-Deploy
   # ==============================
