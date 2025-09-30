@@ -136,7 +136,8 @@ jobs:
         run: |
           argocd login $ARGOCD_SERVER --username $ARGOCD_USER --password $ARGOCD_TOKEN --skip-test-tls
           argocd app get test-nodejs-app --refresh
-          argocd app wait test-nodejs-app --timeout 600 --sync
+          argocd app sync test-nodejs-app
+          argocd app wait test-nodejs-app --timeout 600 --sync --health
 
   # ==============================
   # 4️. Stress Test Post-Deploy
