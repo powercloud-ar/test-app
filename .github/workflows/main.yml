@@ -98,10 +98,6 @@ jobs:
           git commit -m "Update buildVersion to $BUILD_VERSION and Docker image" || echo "No changes to commit"
           git push origin HEAD:main
 
-      - name: Trigger ArgoCD Sync
-        run: |
-          argocd app sync mi-app-qa --auth-token ${{ secrets.ARGOCD_TOKEN }} --server ${{ secrets.ARGOCD_SERVER }}
-
   # ==============================
   # 4️. Stress Test Post-Deploy
   # ==============================
