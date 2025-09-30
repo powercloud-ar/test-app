@@ -12,9 +12,9 @@ spec:
     metadata:
       labels:
         app: mitienda
-        buildVersion: 1.0.277
+        buildVersion: 
         app.kubernetes.io/stage: QA
-        app.kubernetes.io/buildVersion: 1.0.277
+        app.kubernetes.io/buildVersion: 
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
