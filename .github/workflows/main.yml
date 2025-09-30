@@ -135,23 +135,7 @@ jobs:
           ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
         run: |
           argocd login $ARGOCD_SERVER --username $ARGOCD_USER --password $ARGOCD_TOKEN --skip-test-tls
-          argocd app wait test-nodejs-app --timeout 600
-
-      - name: Notify Dynatrace Pre-Deploy
-        env:
-          DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
-          DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
-        run: |
-          curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
-            -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d '{
-            "source": "GitHub Actions",
-            "event.type": "Demo test-nodejs-app",
-            "event.status": "finished",
-            "title": "Deploy en QA"
-          }'
-
+          argocd app wait test-nodejs-app --timeout 600 --sync
 
   # ==============================
   # 4️. Stress Test Post-Deploy
@@ -189,7 +173,7 @@ jobs:
               "source": "GitHub Actions",
               "event.type": "Demo test-nodejs-app",
               "event.status": "finished",
-              "title": "Error - Deploy en QA"
+              "title": "OK - Deploy en QA"
             }'
 
       - name: Notify error
