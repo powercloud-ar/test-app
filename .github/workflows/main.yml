@@ -73,13 +73,7 @@ jobs:
           # Ejemplo usando k6
           docker run --rm -i loadimpact/k6 run - < ./stress-tests/test-script.js \
             --env TARGET_URL=https://qa.mi-app.example.com
-
-      - name: Save stress test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: stress-test-pre
-          path: ./stress-tests/results-pre.json
-
+            
   # ==============================
   # 3️. Deploy via ArgoCD
   # ==============================
@@ -125,9 +119,3 @@ jobs:
         run: |
           docker run --rm -i loadimpact/k6 run - < ./stress-tests/test-script.js \
             --env TARGET_URL=https://qa.mi-app.example.com
-
-      - name: Save stress test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: stress-test-post
-          path: ./stress-tests/results-post.json
