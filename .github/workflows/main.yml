@@ -115,6 +115,7 @@ jobs:
 
       - name: Wait ArgoCD Sync
         env:
+          ARGOCD_USER: ${{ secrets.ARGOCD_USER }}
           ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
           ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
         run: |
