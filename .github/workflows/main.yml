@@ -156,12 +156,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build-and-push, stress-test-pre, deploy-argocd, stress-test-post]
     if: always()
+    env:
+      BUILD_VERSION: ${{ needs.build-and-push.outputs.build-version }}
+      DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
+      DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
     steps:
       - name: Notify success
         if: success()
-        env:
-          DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
-          DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
         run: |
             curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
               -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
@@ -169,16 +170,13 @@ jobs:
               -d '{
               "source": "GitHub Actions",
               "event.type": "deploy",
-              "buildVersion": "${{ env.BUILD_VERSION }}",
+              "buildVersion": "$BUILD_VERSION",
               "event.status": "finished",
               "title": "OK - Deploy en QA"
             }'
 
       - name: Notify error
         if: failure()    
-        env:
-          DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
-          DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
         run: |
             curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
               -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
@@ -186,7 +184,7 @@ jobs:
               -d '{
               "source": "GitHub Actions",
               "event.type": "deploy",
-              "buildVersion": "${{ env.BUILD_VERSION }}",
+              "buildVersion": "$BUILD_VERSION",
               "event.status": "failed",
               "title": "Error - Deploy en QA"
             }'
