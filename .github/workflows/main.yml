@@ -39,7 +39,7 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{
             "source": "GitHub Actions",
-            "buildVersion": "${{ env.BUILD_VERSION }}"
+            "buildVersion": "${{ env.BUILD_VERSION }}",
             "event.type": "deploy",
             "event.status": "started",
             "title": "Start - Deploy en QA"
