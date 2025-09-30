@@ -55,7 +55,15 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:${{ env.BUILD_VERSION }}
-
+     
+      - name: Generate build version
+        id: versionbuild
+        run: |
+          COMMIT_COUNT=$(git rev-list --count HEAD)
+          BUILD_VERSION=1.0.$COMMIT_COUNT
+          echo "::set-output name=build_version::$BUILD_VERSION"
+          echo "Build version: $BUILD_VERSION"
+          
   # ==============================
   # 2️. Stress Test Pre-Deploy
   # ==============================
@@ -77,6 +85,8 @@ jobs:
   deploy-argocd:
     runs-on: ubuntu-latest
     needs: [build-and-push, stress-test-pre]
+    env:
+      BUILD_VERSION: ${{ needs.build-and-push.outputs.build-version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
