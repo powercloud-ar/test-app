@@ -78,7 +78,7 @@ jobs:
           BUILD_VERSION=1.0.$COMMIT_COUNT
           echo "::set-output name=build_version::$BUILD_VERSION"
           echo "Build version: $BUILD_VERSION"
-
+    
   # ==============================
   # 2️. Stress Test Pre-Deploy
   # ==============================
@@ -134,8 +134,8 @@ jobs:
           ARGOCD_SERVER: ${{ secrets.ARGOCD_SERVER }}
           ARGOCD_TOKEN: ${{ secrets.ARGOCD_TOKEN }}
         run: |
-          argocd login $ARGOCD_SERVER --username $ARGOCD_USER --password $ARGOCD_TOKEN --insecure
-        #argocd app wait test-nodejs-app --health --timeout 600
+          argocd login $ARGOCD_SERVER --username $ARGOCD_USER --password $ARGOCD_TOKEN --skip-test-tls
+          argocd app wait test-nodejs-app --timeout 600
 
       - name: Notify Dynatrace Pre-Deploy
         env:
@@ -167,3 +167,43 @@ jobs:
         run: |
           docker run --rm -i loadimpact/k6 run - < ./stress-tests/test-script.js \
             --env TARGET_URL=https://tienda.rocketcloud.io/
+            
+  # ==============================
+  # 5. Dynatrace notify
+  # ==============================
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build-and-push, stress-test-pre, deploy-argocd, stress-test-post]
+    if: always()
+    steps:
+      - name: Notify success
+        if: success()
+        env:
+          DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
+          DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
+        run: |
+            curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
+              -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d '{
+              "source": "GitHub Actions",
+              "event.type": "Demo test-nodejs-app",
+              "event.status": "finished",
+              "title": "Error - Deploy en QA"
+            }'
+
+      - name: Notify error
+        if: failure()    
+        env:
+          DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
+          DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
+        run: |
+            curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
+              -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d '{
+              "source": "GitHub Actions",
+              "event.type": "Demo test-nodejs-app",
+              "event.status": "failed",
+              "title": "Error - Deploy en QA"
+            }'
