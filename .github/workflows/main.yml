@@ -40,8 +40,9 @@ jobs:
             -d '{
             "source": "GitHub Actions",
             "buildVersion": "${{ env.BUILD_VERSION }}",
-            "event.type": "deploy",
+            "event.type": "deployment",
             "event.status": "started",
+            "repository": "test-nodejs-app",
             "title": "Start - Deploy en QA"
           }'
 
@@ -169,10 +170,11 @@ jobs:
               -H "Content-Type: application/json" \
               -d "{
                 \"source\": \"GitHub Actions\",
-                \"event.type\": \"deploy\",
+                \"event.type\": \"deployment\",
                 \"buildVersion\": \"$BUILD_VERSION\",
                 \"event.status\": \"finished\",
-                \"title\": \"OK - Deploy en QA\"
+                \"title\": \"OK - Deploy en QA\",
+                \"repository\": \"test-nodejs-app\"
               }"
               
       - name: Notify error
@@ -183,8 +185,9 @@ jobs:
               -H "Content-Type: application/json" \
               -d "{
                 \"source\": \"GitHub Actions\",
-                \"event.type\": \"deploy\",
+                \"event.type\": \"deployment\",
                 \"buildVersion\": \"$BUILD_VERSION\",
                 \"event.status\": \"failed\",
-                \"title\": \"Error - Deploy en QA\"
+                \"title\": \"Error - Deploy en QA\",
+                \"repository\": \"test-nodejs-app\"
               }"
