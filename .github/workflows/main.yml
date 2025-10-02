@@ -42,7 +42,7 @@ jobs:
             "buildVersion": "${{ env.BUILD_VERSION }}",
             "event.type": "deployment",
             "event.status": "started",
-            "repository": "test-nodejs-app",
+            "dt.srg.tags": "\{\"repository\"\:\[\"test-nodejs-app\"\]\}"
             "title": "Start - Deploy en QA"
           }'
 
@@ -174,7 +174,7 @@ jobs:
                 \"buildVersion\": \"$BUILD_VERSION\",
                 \"event.status\": \"finished\",
                 \"title\": \"OK - Deploy en QA\",
-                \"repository\": \"test-nodejs-app\"
+                \"dt.srg.tags\": \"\{\"repository\"\:\[\"test-nodejs-app\"\]\}\"
               }"
               
       - name: Notify error
@@ -189,5 +189,5 @@ jobs:
                 \"buildVersion\": \"$BUILD_VERSION\",
                 \"event.status\": \"failed\",
                 \"title\": \"Error - Deploy en QA\",
-                \"repository\": \"test-nodejs-app\"
+                \"dt.srg.tags\": \"\{\"repository\"\:\[\"test-nodejs-app\"\]\}\"
               }"
