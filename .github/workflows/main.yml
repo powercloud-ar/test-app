@@ -38,13 +38,13 @@ jobs:
             -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
             -H "Content-Type: application/json" \
             -d '{
-            "source": "GitHub Actions",
-            "buildVersion": "${{ env.BUILD_VERSION }}",
-            "event.type": "deployment",
-            "event.status": "started",
-            "dt.srg.tags": "\{\"repository\"\:\[\"test-nodejs-app\"\]\}"
-            "title": "Start - Deploy en QA"
-          }'
+              "source": "GitHub Actions",
+              "event.type": "deployment",
+              "buildVersion": "'"$BUILD_VERSION"'",
+              "event.status": "started",
+              "title": "Init - Deploy en QA",
+              "dt.srg.tags": "{\"repository\":[\"test-nodejs-app\"]}"
+            }'
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -168,26 +168,26 @@ jobs:
             curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
               -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "{
-                \"source\": \"GitHub Actions\",
-                \"event.type\": \"deployment\",
-                \"buildVersion\": \"$BUILD_VERSION\",
-                \"event.status\": \"finished\",
-                \"title\": \"OK - Deploy en QA\",
-                \"dt.srg.tags\": \"\{\"repository\"\:\[\"test-nodejs-app\"\]\}\"
-              }"
-              
+              -d '{
+                "source": "GitHub Actions",
+                "event.type": "deployment",
+                "buildVersion": "'"$BUILD_VERSION"'",
+                "event.status": "finished",
+                "title": "OK - Deploy en QA",
+                "dt.srg.tags": "{\"repository\":[\"test-nodejs-app\"]}"
+              }'
+          
       - name: Notify error
         if: failure()    
         run: |
             curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
               -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
               -H "Content-Type: application/json" \
-              -d "{
-                \"source\": \"GitHub Actions\",
-                \"event.type\": \"deployment\",
-                \"buildVersion\": \"$BUILD_VERSION\",
-                \"event.status\": \"failed\",
-                \"title\": \"Error - Deploy en QA\",
-                \"dt.srg.tags\": \"\{\"repository\"\:\[\"test-nodejs-app\"\]\}\"
-              }"
+              -d '{
+                "source": "GitHub Actions",
+                "event.type": "deployment",
+                "buildVersion": "'"$BUILD_VERSION"'",
+                "event.status": "failed",
+                "title": "Error - Deploy en QA",
+                "dt.srg.tags": "{\"repository\":[\"test-nodejs-app\"]}"
+              }'
