@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   logger.info('GET / Home hit');
-  res.render('index', { title: 'Tienda - PowerCloud' });
+  res.render('index', { title: 'Lista - 02/10/2025' });
 });
 
 router.get('/form-producto', (req, res) => {
