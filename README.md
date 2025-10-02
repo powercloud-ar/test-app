@@ -6,7 +6,6 @@ https://docs.dynatrace.com/docs/deliver/quality-gates
 
 https://docs.dynatrace.com/docs/shortlink/srg-landing
 
-
 # Test NodeJS App
 ---
 
