@@ -172,7 +172,7 @@ jobs:
               -H "Content-Type: application/json" \
               -d '{
                 "source": "GitHub Actions",
-                "event.type": "guardian.validation.triggered",
+                "event.type": "deployment",
                 "event.status": "finished",
                 "title": "OK - Deploy en QA",
                 "execution_context": {
