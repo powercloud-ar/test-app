@@ -40,10 +40,12 @@ jobs:
             -d '{
               "source": "GitHub Actions",
               "event.type": "deployment",
-              "buildVersion": "'"$BUILD_VERSION"'",
               "event.status": "started",
               "title": "Init - Deploy en QA",
-              "dt.srg.tags": "{\"repository\":[\"test-nodejs-app\"]}"
+              "execution_context": {
+                  "buildId": "'"$BUILD_VERSION"'",
+                  "repository": "test-nodejs-app"
+                }
             }'
 
       - name: Set up Node.js
@@ -171,10 +173,12 @@ jobs:
               -d '{
                 "source": "GitHub Actions",
                 "event.type": "deployment",
-                "buildVersion": "'"$BUILD_VERSION"'",
                 "event.status": "finished",
                 "title": "OK - Deploy en QA",
-                "dt.srg.tags": "{\"repository\":[\"test-nodejs-app\"]}"
+                "execution_context": {
+                  "buildId": "'"$BUILD_VERSION"'",
+                  "repository": "test-nodejs-app"
+                }
               }'
           
       - name: Notify error
@@ -186,8 +190,10 @@ jobs:
               -d '{
                 "source": "GitHub Actions",
                 "event.type": "deployment",
-                "buildVersion": "'"$BUILD_VERSION"'",
                 "event.status": "failed",
                 "title": "Error - Deploy en QA",
-                "dt.srg.tags": "{\"repository\":[\"test-nodejs-app\"]}"
+                "execution_context": {
+                  "buildId": "'"$BUILD_VERSION"'",
+                  "repository": "test-nodejs-app"
+                }
               }'
