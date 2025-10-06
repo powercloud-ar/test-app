@@ -12,9 +12,9 @@ spec:
     metadata:
       labels:
         app: mitienda
-        buildVersion: 1.0.339
+        buildVersion: 1.0.341
         app.kubernetes.io/stage: QA
-        app.kubernetes.io/buildVersion: 1.0.339
+        app.kubernetes.io/buildVersion: 1.0.341
         app.kubernetes.io/name: mitienda
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: mitienda
@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
         - name: mitienda
-          image: mnroman/mi-app-node:latest
+          image: powercloudar/mi-app-node:latest
           ports:
             - containerPort: 3000
           env:
