@@ -44,10 +44,10 @@ jobs:
               "event.status": "started",
               "task.name": "GitHub Workflow",
               "task.outcome": "running",
-              "vcs.repository.url.full": "https://github.com/martiroman/test-nodejs-app.git",
+              "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
               "execution_context": {
                   "buildId": "'"$BUILD_VERSION"'",
-                  "repository": "test-nodejs-app"
+                  "repository": "test-app"
                 }
             }'
 
@@ -108,10 +108,10 @@ jobs:
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
                   "task.outcome": "error",
-                  "vcs.repository.url.full": "https://github.com/martiroman/test-nodejs-app.git",
+                  "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
                       "buildId": "'"$BUILD_VERSION"'",
-                      "repository": "test-nodejs-app"
+                      "repository": "test-app"
                     }
               }'
 
@@ -168,10 +168,10 @@ jobs:
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
                   "task.outcome": "success",
-                  "vcs.repository.url.full": "https://github.com/martiroman/test-nodejs-app.git", 
+                  "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git", 
                   "execution_context": {
                       "buildId": "'"$BUILD_VERSION"'",
-                      "repository": "test-nodejs-app"
+                      "repository": "test-app"
                     }
               }'
           
