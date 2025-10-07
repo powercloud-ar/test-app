@@ -144,6 +144,26 @@ jobs:
           git commit -m "Update buildVersion to $BUILD_VERSION and Docker image" || echo "No changes to commit"
           git push origin HEAD:main
 
+      - name: Notify error
+        if: failure()    
+        run: |
+            curl -X POST "https://$DYNATRACE_TENANT.live.dynatrace.com/platform/ingest/v1/events.sdlc" \
+              -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
+              -H "Content-Type: application/json" \
+              -d '{
+                  "source": "GitHub Actions",
+                  "event.type": "build",
+                  "event.provider": "github",
+                  "event.status": "finished",
+                  "task.name": "GitHub Workflow",
+                  "task.outcome": "error",
+                  "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
+                  "execution_context": {
+                      "buildId": "'"$BUILD_VERSION"'",
+                      "repository": "test-app"
+                    }
+              }'
+
   # ==============================
   # 4. Notificacion a Dynatrace
   # ==============================
