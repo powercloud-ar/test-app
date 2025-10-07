@@ -149,7 +149,7 @@ jobs:
   # ==============================
   notify:
     runs-on: ubuntu-latest
-    needs: [build-and-push]
+    needs: [update-yaml]
     if: success()
     env:
       BUILD_VERSION: ${{ needs.build-and-push.outputs.build-version }}
