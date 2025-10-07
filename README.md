@@ -73,23 +73,3 @@ https://docs.dynatrace.com/docs/shortlink/deployment-observability-use-case-argo
                         "mitienda_nodejs_active_handles"
                         ]
                   }
-### Traces
-
-    DT
-    Opentelemetry
-    
-### Logs
-Logs en Nodejs
-
-    > npm install winston
-
-    const winston = require('winston');
-
-    const logger = winston.createLogger({
-    format: winston.format.simple(),
-    transports: [
-        new winston.transports.Console(),
-    ],
-    });
-
-    logger.info('Hello, Fluent Bit!');
