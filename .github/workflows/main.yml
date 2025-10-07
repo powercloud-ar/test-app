@@ -103,7 +103,7 @@ jobs:
               -H "Content-Type: application/json" \
               -d '{
                   "source": "GitHub Actions",
-                  "event.type": "cicd.pipeline",
+                  "event.type": "build",
                   "event.provider": "github",
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
@@ -163,7 +163,7 @@ jobs:
               -H "Content-Type: application/json" \
               -d '{
                   "source": "GitHub Actions",
-                  "event.type": "cicd.pipeline",
+                  "event.type": "build",
                   "event.provider": "github",
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
