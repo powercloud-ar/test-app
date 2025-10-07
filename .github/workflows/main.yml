@@ -39,9 +39,12 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{
               "source": "GitHub Actions",
-              "event.type": "deployment",
+              "event.type": "cicd.pipeline",
+              "event.provider": "github",
               "event.status": "started",
-              "title": "Init - Deploy en QA",
+              "task.name": "GitHub Workflow",
+              "task.outcome": "running",
+              "vcs.repository.url.full": "https://github.com/martiroman/test-nodejs-app.git" 
               "execution_context": {
                   "buildId": "'"$BUILD_VERSION"'",
                   "repository": "test-nodejs-app"
@@ -171,14 +174,17 @@ jobs:
               -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
               -H "Content-Type: application/json" \
               -d '{
-                "source": "GitHub Actions",
-                "event.type": "deployment",
-                "event.status": "finished",
-                "title": "OK - Deploy en QA",
-                "execution_context": {
-                  "buildId": "'"$BUILD_VERSION"'",
-                  "repository": "test-nodejs-app"
-                }
+                  "source": "GitHub Actions",
+                  "event.type": "cicd.pipeline",
+                  "event.provider": "github",
+                  "event.status": "finished",
+                  "task.name": "GitHub Workflow",
+                  "task.outcome": "success",
+                  "vcs.repository.url.full": "https://github.com/martiroman/test-nodejs-app.git" 
+                  "execution_context": {
+                      "buildId": "'"$BUILD_VERSION"'",
+                      "repository": "test-nodejs-app"
+                    }
               }'
           
       - name: Notify error
@@ -188,12 +194,15 @@ jobs:
               -H "Authorization: Api-Token $DYNATRACE_TOKEN" \
               -H "Content-Type: application/json" \
               -d '{
-                "source": "GitHub Actions",
-                "event.type": "deployment",
-                "event.status": "failed",
-                "title": "Error - Deploy en QA",
-                "execution_context": {
-                  "buildId": "'"$BUILD_VERSION"'",
-                  "repository": "test-nodejs-app"
-                }
+                  "source": "GitHub Actions",
+                  "event.type": "cicd.pipeline",
+                  "event.provider": "github",
+                  "event.status": "finished",
+                  "task.name": "GitHub Workflow",
+                  "task.outcome": "error",
+                  "vcs.repository.url.full": "https://github.com/martiroman/test-nodejs-app.git" 
+                  "execution_context": {
+                      "buildId": "'"$BUILD_VERSION"'",
+                      "repository": "test-nodejs-app"
+                    }
               }'
