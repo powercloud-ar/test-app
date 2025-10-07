@@ -114,9 +114,38 @@ jobs:
                       "repository": "test-nodejs-app"
                     }
               }'
-              
+
   # ==============================
-  # 3. Notificacion a Dynatrace
+  # 3. Update yaml
+  # ==============================
+  update-yaml:
+    runs-on: ubuntu-latest
+    needs: [build-and-push, stress-test-pre]
+    env:
+      BUILD_VERSION: ${{ needs.build-and-push.outputs.build-version }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update deploy.yaml
+        run: |
+          DEPLOY_FILE=conf-k8s/deploy.yaml
+          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
+          BUILD_VERSION=${{ env.BUILD_VERSION }}
+
+          sed -i "s|image: .*|image: $IMAGE_NAME|g" $DEPLOY_FILE
+          sed -i "s|buildVersion: .*|buildVersion: $BUILD_VERSION|g" $DEPLOY_FILE
+
+      - name: Commit updated deploy.yaml
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add conf-k8s/deploy.yaml
+          git commit -m "Update buildVersion to $BUILD_VERSION and Docker image" || echo "No changes to commit"
+          git push origin HEAD:main
+
+  # ==============================
+  # 4. Notificacion a Dynatrace
   # ==============================
   notify:
     runs-on: ubuntu-latest
