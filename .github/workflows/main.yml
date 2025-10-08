@@ -46,8 +46,8 @@ jobs:
               "task.outcome": "running",
               "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
               "execution_context": {
-                  "buildId": "'"$BUILD_VERSION"'",
-                  "repository": "test-app"
+                "commit": "$GITHUB_SHA",
+                "repository": "$GITHUB_REPOSITORY"
                 }
             }'
 
@@ -110,9 +110,9 @@ jobs:
                   "task.outcome": "error",
                   "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
-                      "buildId": "'"$BUILD_VERSION"'",
-                      "repository": "test-app"
-                    }
+                    "commit": "'"$GITHUB_SHA"'",
+                    "repository": "test-app"
+                }
               }'
 
   # ==============================
@@ -159,10 +159,10 @@ jobs:
                   "task.outcome": "error",
                   "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
-                      "buildId": "'"$BUILD_VERSION"'",
-                      "repository": "test-app"
+                    "commit": "$GITHUB_SHA",
+                    "repository": "$GITHUB_REPOSITORY"
                     }
-              }'
+                  }'
 
   # ==============================
   # 4. Notificacion a Dynatrace
@@ -190,9 +190,9 @@ jobs:
                   "task.outcome": "success",
                   "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git", 
                   "execution_context": {
-                      "buildId": "'"$BUILD_VERSION"'",
-                      "repository": "test-app"
-                    }
+                    "commit": "$GITHUB_SHA",
+                    "repository": "$GITHUB_REPOSITORY"
+                  }
               }'
           
       
