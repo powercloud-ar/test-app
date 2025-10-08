@@ -169,7 +169,7 @@ jobs:
           git config user.email "dynatrace@powercloud.com.ar"
           git add $DEPLOY_FILE
           git commit -m "Update buildVersion to ${BUILD_VERSION} and Docker image" || echo "No changes to commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${TARGET_REPO}.git HEAD:main
+          git push https://${GITHUB_TOKEN}@github.com/${TARGET_REPO}.git HEAD:main
           
       - name: Notify error
         if: failure()    
