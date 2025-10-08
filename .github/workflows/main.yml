@@ -153,7 +153,7 @@ jobs:
           DEPLOY_FILE_PATH: deploy.yaml
           IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
           BUILD_VERSION: ${{ env.BUILD_VERSION }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
           git clone https://github.com/${TARGET_REPO}.git
           cd $(basename "$TARGET_REPO")
