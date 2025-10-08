@@ -44,10 +44,9 @@ jobs:
               "event.status": "started",
               "task.name": "GitHub Workflow",
               "task.outcome": "running",
-              "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
               "execution_context": {
                 "commit": "${{ github.sha }}",
-                "repository": "${{ github.repository }}"
+                "repository": "https://github.com/${{ github.repository }}"
                 }
             }'
 
@@ -108,10 +107,9 @@ jobs:
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
                   "task.outcome": "error",
-                  "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
                     "commit": "${{ github.sha }}",
-                    "repository": "${{ github.repository }}"
+                    "repository": "https://github.com/${{ github.repository }}"
                 }
               }'
 
@@ -157,10 +155,9 @@ jobs:
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
                   "task.outcome": "error",
-                  "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
                     "commit": "${{ github.sha }}",
-                    "repository": "${{ github.repository }}"
+                    "repository": "https://github.com/${{ github.repository }}"
                     }
                   }'
 
@@ -188,10 +185,9 @@ jobs:
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
                   "task.outcome": "success",
-                  "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git", 
                   "execution_context": {
                     "commit": "${{ github.sha }}",
-                    "repository": "${{ github.repository }}"
+                    "repository": "https://github.com/${{ github.repository }}"
                   }
               }'
           
