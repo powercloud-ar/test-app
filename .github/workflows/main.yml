@@ -150,7 +150,7 @@ jobs:
       - name: Update deploy.yaml
         env:
           TARGET_REPO: powercloud-ar/test-app-yaml
-          DEPLOY_FILE_PATH: conf-k8s/deploy.yaml
+          DEPLOY_FILE_PATH: deploy.yaml
           IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
           BUILD_VERSION: ${{ env.BUILD_VERSION }}
           GIT_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
