@@ -153,9 +153,8 @@ jobs:
           DEPLOY_FILE_PATH: deploy.yaml
           IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
           BUILD_VERSION: ${{ env.BUILD_VERSION }}
-          GIT_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Clonar el repo destino con autenticación
           git clone https://github.com/${TARGET_REPO}.git
           cd $(basename "$TARGET_REPO")
       
@@ -170,8 +169,8 @@ jobs:
           git config user.email "github-actions@github.com"
           git add $DEPLOY_FILE
           git commit -m "Update buildVersion to ${BUILD_VERSION} and Docker image" || echo "No changes to commit"
-          git push origin main
-
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${TARGET_REPO}.git HEAD:main
+          
       - name: Notify error
         if: failure()    
         run: |
