@@ -8,7 +8,7 @@ https://docs.dynatrace.com/docs/shortlink/srg-landing
 
 https://docs.dynatrace.com/docs/shortlink/deployment-observability-use-case-argocd
 
----
+
 
 # Test NodeJS App
 ---
