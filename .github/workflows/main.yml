@@ -126,21 +126,29 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Update deploy.yaml
+        env:
+          TARGET_REPO: powercloud-ar/test-app-yaml
+          DEPLOY_FILE_PATH: conf-k8s/deploy.yaml
+          IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
+          BUILD_VERSION: ${{ env.BUILD_VERSION }}
+          GIT_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          DEPLOY_FILE=conf-k8s/deploy.yaml
-          IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
-          BUILD_VERSION=${{ env.BUILD_VERSION }}
-
-          sed -i "s|image: .*|image: $IMAGE_NAME|g" $DEPLOY_FILE
-          sed -i "s|buildVersion: .*|buildVersion: $BUILD_VERSION|g" $DEPLOY_FILE
-
-      - name: Commit updated deploy.yaml
-        run: |
+          # Clonar el repo destino con autenticación
+          git clone https://github.com/${TARGET_REPO}.git
+          cd $(basename "$TARGET_REPO")
+      
+          DEPLOY_FILE=$DEPLOY_FILE_PATH
+      
+          # Modificar las líneas del YAML
+          sed -i "s|image: .*|image: ${IMAGE_NAME}|g" $DEPLOY_FILE
+          sed -i "s|buildVersion: .*|buildVersion: ${BUILD_VERSION}|g" $DEPLOY_FILE
+      
+          # Commit y push
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add conf-k8s/deploy.yaml
-          git commit -m "Update buildVersion to $BUILD_VERSION and Docker image" || echo "No changes to commit"
-          git push origin HEAD:main
+          git add $DEPLOY_FILE
+          git commit -m "Update buildVersion to ${BUILD_VERSION} and Docker image" || echo "No changes to commit"
+          git push origin main
 
       - name: Notify error
         if: failure()    
