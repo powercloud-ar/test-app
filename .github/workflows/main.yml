@@ -46,8 +46,8 @@ jobs:
               "task.outcome": "running",
               "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
               "execution_context": {
-                "commit": "$GITHUB_SHA",
-                "repository": "$GITHUB_REPOSITORY"
+                "commit": "${{ github.sha }}",
+                "repository": "${{ github.repository }}"
                 }
             }'
 
@@ -110,8 +110,8 @@ jobs:
                   "task.outcome": "error",
                   "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
-                    "commit": "'"$GITHUB_SHA"'",
-                    "repository": "test-app"
+                    "commit": "${{ github.sha }}",
+                    "repository": "${{ github.repository }}"
                 }
               }'
 
@@ -159,8 +159,8 @@ jobs:
                   "task.outcome": "error",
                   "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git",
                   "execution_context": {
-                    "commit": "$GITHUB_SHA",
-                    "repository": "$GITHUB_REPOSITORY"
+                    "commit": "${{ github.sha }}",
+                    "repository": "${{ github.repository }}"
                     }
                   }'
 
@@ -190,8 +190,8 @@ jobs:
                   "task.outcome": "success",
                   "vcs.repository.url.full": "https://github.com/powercloud-ar/test-app.git", 
                   "execution_context": {
-                    "commit": "$GITHUB_SHA",
-                    "repository": "$GITHUB_REPOSITORY"
+                    "commit": "${{ github.sha }}",
+                    "repository": "${{ github.repository }}"
                   }
               }'
           
