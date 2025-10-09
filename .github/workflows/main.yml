@@ -155,7 +155,7 @@ jobs:
           BUILD_VERSION: ${{ env.BUILD_VERSION }}
         run: |
           # Clonar Repo
-          REPO_URL="https://${{ secrets.TARGET_REPO_TOKEN }}@github.com/$TARGET_REPO.git"
+          REPO_URL="https://martiroman:${{ secrets.TARGET_REPO_TOKEN }}@github.com/$TARGET_REPO.git"
           git clone $REPO_URL
           cd $(basename "$TARGET_REPO")
       
