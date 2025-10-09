@@ -153,12 +153,15 @@ jobs:
           DEPLOY_FILE: deploy.yaml
           IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
           BUILD_VERSION: ${{ env.BUILD_VERSION }}
+          GH_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }} 
         run: |
           # Clonar Repo
-          REPO_URL="https://martiroman:${{ secrets.TARGET_REPO_TOKEN }}@github.com/$TARGET_REPO.git"
-          git clone $REPO_URL
+          git clone https://github.com/$TARGET_REPO.git
           cd $(basename "$TARGET_REPO")
-      
+
+          NEW_REMOTE_URL="https://martiroman:${GH_TOKEN}@github.com/${TARGET_REPO}.git"
+          git remote set-url origin $NEW_REMOTE_URL
+
           # Modificar YAML
           sed -i "s|image: .*|image: ${IMAGE_NAME}|g" $DEPLOY_FILE
           sed -i "s|buildVersion: .*|buildVersion: ${BUILD_VERSION}|g" $DEPLOY_FILE
