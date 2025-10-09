@@ -150,26 +150,26 @@ jobs:
       - name: Update deploy.yaml
         env:
           TARGET_REPO: powercloud-ar/test-app-yaml
-          DEPLOY_FILE_PATH: deploy.yaml
+          DEPLOY_FILE: deploy.yaml
           IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
           BUILD_VERSION: ${{ env.BUILD_VERSION }}
-          GITHUB_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
         run: |
-          git clone https://github.com/${TARGET_REPO}.git
+          # Clonar Repo
+          REPO_URL="https://${{ secrets.TARGET_REPO_TOKEN }}@github.com/$TARGET_REPO.git"
+          git clone $REPO_URL
           cd $(basename "$TARGET_REPO")
       
-          DEPLOY_FILE=$DEPLOY_FILE_PATH
-      
-          # Modificar las líneas del YAML
+          # Modificar YAML
           sed -i "s|image: .*|image: ${IMAGE_NAME}|g" $DEPLOY_FILE
           sed -i "s|buildVersion: .*|buildVersion: ${BUILD_VERSION}|g" $DEPLOY_FILE
       
           # Commit y push
-          git config user.name "powercloud-ar"
-          git config user.email "dynatrace@powercloud.com.ar"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+         
           git add $DEPLOY_FILE
           git commit -m "Update buildVersion to ${BUILD_VERSION} and Docker image" || echo "No changes to commit"
-          git push https://${GITHUB_TOKEN}@github.com/${TARGET_REPO}.git HEAD:main
+          git push
           
       - name: Notify error
         if: failure()    
