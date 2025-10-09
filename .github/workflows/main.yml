@@ -154,7 +154,6 @@ jobs:
       - name: Update yaml
         run: |
           cd deploy-repo
-          sed -i "s|image: .*|image: ${{ env.IMAGE_NAME }}|g" deploy.yaml
           sed -i "s|buildVersion: .*|buildVersion: ${{ env.BUILD_VERSION }}|g" deploy.yaml
       
       - name: Commit
