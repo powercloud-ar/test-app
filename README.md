@@ -20,8 +20,7 @@ https://docs.dynatrace.com/docs/shortlink/deployment-observability-use-case-argo
             - Database: MongoDB
 ---
 ## DevOps Pipeline
-    GitHub: 
-    Commit -> Pull Request -> Merge -> GitAction (Build & Deploy) 
+    GitHub: GitAction (Build & Deploy) 
          -----> Docker Hub: Registry
          -----> ArgoCD: Deployment in  K8s Cluster
     Dynatrace:
