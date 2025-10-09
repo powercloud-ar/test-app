@@ -144,36 +144,27 @@ jobs:
       DYNATRACE_TOKEN: ${{ secrets.DYNA_TOKEN }}
       DYNATRACE_TENANT: ${{ secrets.DYNA_TENANT }}
     steps:
-      - name: Checkout repository
+      - name: Clone repo
         uses: actions/checkout@v4
-
-      - name: Update deploy.yaml
-        env:
-          TARGET_REPO: powercloud-ar/test-app-yaml
-          DEPLOY_FILE: deploy.yaml
-          IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/mi-app-node:latest
-          BUILD_VERSION: ${{ env.BUILD_VERSION }}
-          GH_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }} 
-        run: |
-          # Clonar Repo
-          git clone https://github.com/$TARGET_REPO.git
-          cd $(basename "$TARGET_REPO")
-
-          NEW_REMOTE_URL="https://powercloud-ar:${GH_TOKEN}@github.com/${TARGET_REPO}.git"
-          git remote set-url origin $NEW_REMOTE_URL
-
-          # Modificar Deploy YAML
-          sed -i "s|image: .*|image: ${IMAGE_NAME}|g" $DEPLOY_FILE
-          sed -i "s|buildVersion: .*|buildVersion: ${BUILD_VERSION}|g" $DEPLOY_FILE
-      
-          # Commit y push
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-         
-          git add $DEPLOY_FILE
-          git commit -m "Update buildVersion to ${BUILD_VERSION} and Docker image" || echo "No changes to commit"
-          git push
+        with:
+          repository: powercloud-ar/test-app-yaml
+          token: ${{ secrets.TARGET_REPO_TOKEN }}
+          path: deploy-repo
           
+      - name: Update yaml
+        run: |
+          cd deploy-repo
+          sed -i "s|image: .*|image: ${{ env.IMAGE_NAME }}|g" deploy.yaml
+          sed -i "s|buildVersion: .*|buildVersion: ${{ env.BUILD_VERSION }}|g" deploy.yaml
+      
+      - name: Commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: deploy-repo 
+          commit_message: "Auto-Update deploy version to ${{ env.BUILD_VERSION }} [skip ci]"
+          commit_user_name: github-actions[bot]
+          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>        
+      
       - name: Notify error
         if: failure()    
         run: |
