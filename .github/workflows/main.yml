@@ -159,7 +159,7 @@ jobs:
           git clone https://github.com/$TARGET_REPO.git
           cd $(basename "$TARGET_REPO")
 
-          NEW_REMOTE_URL="https://martiroman:${GH_TOKEN}@github.com/${TARGET_REPO}.git"
+          NEW_REMOTE_URL="https://powercloud-ar:${GH_TOKEN}@github.com/${TARGET_REPO}.git"
           git remote set-url origin $NEW_REMOTE_URL
 
           # Modificar YAML
