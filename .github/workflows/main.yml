@@ -44,11 +44,7 @@ jobs:
               "event.provider": "github",
               "event.status": "started",
               "task.name": "GitHub Workflow",
-              "task.outcome": "running",
-              "execution_context": {
-                "commit": "${{ github.sha }}",
-                "repository": "https://github.com/${{ github.repository }}"
-                }
+              "task.outcome": "running"
             }'
 
       - name: Notify error
@@ -63,11 +59,7 @@ jobs:
                   "event.provider": "github",
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
-                  "task.outcome": "error",
-                  "execution_context": {
-                    "commit": "${{ github.sha }}",
-                    "repository": "https://github.com/${{ github.repository }}"
-                    }
+                  "task.outcome": "error"
                   }'
 
       - name: Set up Node.js
@@ -126,11 +118,7 @@ jobs:
                   "event.provider": "github",
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
-                  "task.outcome": "error",
-                  "execution_context": {
-                    "commit": "${{ github.sha }}",
-                    "repository": "https://github.com/${{ github.repository }}"
-                }
+                  "task.outcome": "error"
               }'
 
   # ==============================
@@ -206,11 +194,5 @@ jobs:
                   "event.provider": "github",
                   "event.status": "finished",
                   "task.name": "GitHub Workflow",
-                  "task.outcome": "success",
-                  "execution_context": {
-                    "commit": "${{ github.sha }}",
-                    "repository": "https://github.com/${{ github.repository }}"
-                  }
+                  "task.outcome": "success"
               }'
-          
-      
