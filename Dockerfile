@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/node:18-alpine3.18
-COPY --from=https://dqk02008.live.dynatrace.com/linux/oneagent-codemodules:nodejs / /
-ENV LD_PRELOAD /opt/dynatrace/oneagent/agent/lib64/liboneagentproc.so
+#COPY --from=https://dqk02008.live.dynatrace.com/linux/oneagent-codemodules:nodejs / /
+#ENV LD_PRELOAD /opt/dynatrace/oneagent/agent/lib64/liboneagentproc.so
 
 # Create app directory
 RUN mkdir -p /usr/src/app
