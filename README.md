@@ -10,7 +10,6 @@ https://docs.dynatrace.com/docs/shortlink/deployment-observability-use-case-argo
 
 ---
 ## Pipeline DevOps + Observabilidad OpenTelemetry
-  
         Services: 
             - Backend: NodeJS
             - Database: MongoDB
